@@ -19,7 +19,7 @@ def select():
         ans = input('Select option: ')
         if ans == '1':
             _pageLogin.displayLogin()
-        if ans == '2':
+        elif ans == '2':
             _pageSignup.displaySignup()
         elif ans == '0':
             exit(0)
