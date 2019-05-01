@@ -6,7 +6,11 @@ from models import rest as _rest
 def setModuleError(**args):
     _colorize.consoleLog(action='warning', msg=f'\n{args.get("payload")}')
     _colorize.consoleLog(action='error', msg=f'{args.get("error")}\n')
-    exit(1)
+    return _rest.ModuleStatus(payload=args.get('payload'), error=args.get('error'))
+
+def setModuleSuccess(**args):
+    _colorize.consoleLog(action='success', msg=f'\n{args.get("payload")}\n')
+    return _rest.ModuleStatus(payload=args.get('payload'))
 
 def resultError(result):
     if isinstance(result, _rest.ModuleStatus) and result.error:
