@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 from utils import colorize as _colorize
 from ruamel.yaml import YAML
 from models import rest as _rest
@@ -19,7 +20,7 @@ def resultError(result):
 
 def getConfig():
     try:
-        readYamlConfig = readFile("./config/config.yaml", 'r')
+        readYamlConfig = openFile("./config/config.yaml", 'r').read()
         if resultError(readYamlConfig):
             return readYamlConfig
 
@@ -29,14 +30,16 @@ def getConfig():
     except Exception as e:
         return setModuleError(payload=e, error='Error reading config file')
 
-def readFile(path, perms):
+def openFile(path, perms):
     try:
         if not perms:
             perms = 'r'
-        f = open(path, perms)
-        return f.read()
+        return open(path, perms)
     except Exception as e:
         return setModuleError(payload=e, error='RAW file can\'t be accessed at the moment')
+
+def userHome():
+    return str(Path.home())
 
 def encodeJson(res):
     return json.loads(res)
