@@ -10,7 +10,7 @@ def display():
             [0] - Exit
             """)
 def welcome():
-    _colorize.consoleLog(action='info', msg='\nWelcome to Thori, the secure and private messaging APP')
+    _colorize.consoleLog(action='info', msg='\nWelcome to Thoro, the secure and private messaging APP')
 def select():
     welcome()
     ans = True
