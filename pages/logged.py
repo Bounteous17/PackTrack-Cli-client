@@ -1,4 +1,5 @@
 from utils import colorize as _colorize
+from pages import chat as _pageChat
 
 def menu():
     ans = True
@@ -9,13 +10,10 @@ def menu():
         """)
         ans = input('Select option: ')
         if ans == '1':
-            startChat()
+            _pageChat.displayInnit()
         elif ans == '0':
             _colorize.consoleLog(action='success', msg='\nUser logout success')
             ans = False
         else:
             _colorize.consoleLog(action='error', msg='\nUnknown option for logged user')
-
-def startChat():
-    nUsername = input('Enter Username for new chat: ')
 
