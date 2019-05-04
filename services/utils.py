@@ -12,6 +12,11 @@ class request():
         enc_res = _functions.encodeJson(r.text)
         return response(res=r, status=r.status_code, body=enc_res)
 
+    def get(self):
+        r = requests.get(f'{_defaults.api_url}{self.endpoint}', headers = self.authorization)
+        enc_res = _functions.encodeJson(r.text)
+        return response(res=r, status=r.status_code, body=enc_res)
+
 class response():
     def __init__(self, **args):
         self.res = args.get('res')

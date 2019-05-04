@@ -9,3 +9,11 @@ def innit(username):
         return r
     except requests.exceptions.HTTPError as err:
         return _functions.setModuleError(payload=err, error=r.body['msg'])
+
+def list():
+    try:
+        r = _sUtils.request('/chat', {}, _defaults.access_token).get()
+        r.res.raise_for_status()
+        return r
+    except requests.exceptions.HTTPError as err:
+        return _functions.setModuleError(payload=err, error=r.body['msg'])

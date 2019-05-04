@@ -8,4 +8,10 @@ def displayInnit():
     if _functions.resultError(r):
         return r
     _functions.setModuleSuccess(payload=r.body['msg'])
+
+def displayList():
+    r = _serviceChat.list()
+    if _functions.resultError(r):
+        return r
+    _functions.setModuleSuccess(payload=r.body)
     return _pageLogged.menu()
